@@ -1,11 +1,10 @@
-// src/Status.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import './css/Status.css';
 import BASE_URL from './config';
+import './css/Failure.css';
 
-const Status = () => {
+const Failure = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
     const sessionId = query.get('cko-session-id');
@@ -23,10 +22,6 @@ const Status = () => {
                 const response = await axios.get(`${BASE_URL}/payments/status/${sessionId}`);
                 setStatusData(response.data);
                 setLoading(false);
-
-                if (response.data.status !== 'CAPTURED' && response.data.status !== 'DECLINED') {
-                    setTimeout(fetchStatus, 5000);
-                }
             } catch (error) {
                 console.error('Error fetching status:', error);
                 setLoading(false);
@@ -36,26 +31,29 @@ const Status = () => {
         fetchStatus();
     }, [sessionId]);
 
-    if (loading) return <div className="status-container">Loading...</div>;
+    if (loading) return <div className="failure-container">Loading...</div>;
 
     return (
-        <div className="status-container">
-            <h2>Payment Status</h2>
+        <div className="failure-container">
+            <h2>Payment Failed</h2>
             {statusData ? (
-                <div className="status-details">
+                <div className="failure-details">
                     <p><strong>Payment ID:</strong> {statusData.paymentId}</p>
                     <p><strong>Session ID:</strong> {statusData.sessionId}</p>
                     <p><strong>User ID:</strong> {statusData.userId}</p>
                     <p><strong>Amount:</strong> {statusData.amount.toFixed(2)}</p>
                     <p><strong>Currency:</strong> {statusData.currency}</p>
-                    <p><strong>Status:</strong> {statusData.status}</p>
+                    <p><strong>Status:</strong> DECLINED</p>
                     <p><strong>Payment Type:</strong> {statusData.paymentType}</p>
                 </div>
             ) : (
                 <p>No payment details available.</p>
             )}
+            <div className="failure-message">
+                <p>Unfortunately, your payment was not successful. Please try again or contact support if the problem persists.</p>
+            </div>
         </div>
     );
 };
 
-export default Status;
+export default Failure;

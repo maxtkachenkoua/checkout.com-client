@@ -1,0 +1,36 @@
+/* src/Failure.css */
+.failure-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.failure-details {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.failure-details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.failure-details p strong {
+    color: #333;
+}
+
+.failure-message {
+    margin-top: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css';  // Ensure you import your CSS
+import './css/App.css';
+import BASE_URL from './config';
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
@@ -9,7 +10,7 @@ const Login = ({ onLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://95.216.224.218:8889/api/auth/login', { username, password });
+            const response = await axios.post(`${BASE_URL}/auth/login`, { username, password });
             console.log(response)
             const token = response.data.token;
             onLogin(token);
