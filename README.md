@@ -44,7 +44,11 @@ Backend source code: https://github.com/maxtkachenkoua/checkout.com
 4. **Open Application Page**
    ```bash 
    This will start the application on http://localhost:3000/.
-
+5. **Supported Users (3 test users)**
+   ```bash 
+   maxtkachenko:password1
+   johnmattews:password2
+   tonnyfellow:password3
 ## Application Overview
 
 ### Login Component
