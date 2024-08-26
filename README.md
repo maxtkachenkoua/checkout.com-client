@@ -1,4 +1,4 @@
-# Payment Processing Application [Task Task]
+# Payment Processing Application [Front End Client]
 
 This project is a React-based web application that handles user authentication and payment processing. The application integrates with a backend server for payment status tracking and utilizes the Checkout.com API for payment processing.
 
